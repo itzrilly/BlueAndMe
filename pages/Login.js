@@ -36,17 +36,16 @@ const Login = () => {
            <ImageBackground
                 source={require('../assets/images/bg/blue_woman.png')}
                 style={styles.img_background}
-           >
-            <Text style={styles.brand_view_text}>And Me</Text>
-           </ImageBackground>
+           />
            
            <View style={styles.bottom_view}>
                 <View style={styles.radius_view}>
-                    <Text style={styles.welcome_text} >Bienvenue!</Text>
+                    <Text style={styles.welcome_text}>Bienvenue!</Text>
+                    <Text style={styles.info_text}>Entrez votre numéro de téléphone pour vous connecter</Text>
                     {/* Form Inputs View */}
                     <View style={styles.login_view}>
                         <TextInput 
-                            placeholder='Numéro de service' 
+                            placeholder='620 XX XX XX' 
                             style={styles.text_input}
                             keyboardType = 'numeric'
                             maxLength={9}
@@ -56,40 +55,6 @@ const Login = () => {
                                 onNumberInputChange(text);
                             }}
                         />
-                        <TextInput 
-                            secureTextEntry={true} 
-                            style={styles.text_input} 
-                            placeholder='Mot de passe' 
-                        />
-                        <View style={styles.check_code}>
-                            <TextInput
-                                style={styles.text_input_code} 
-                                placeholder='Code de vérification' 
-                                maxLength={4}
-                            />
-                            <Image
-                                source={ require('../assets/images/icons/lg_code.png') }
-                                style={styles.img_code}
-                            />
-                        </View>
-                    </View>
-
-                    <View style={styles.forgot_pw_view}>
-                        <View style={styles.checkbox_container}>
-                            <CheckBox
-                                disabled={false}
-                                value={toggleCheckBox}
-                                onValueChange={(newValue) => setToggleCheckBox(newValue)}
-                            />
-                            <Text style={styles.label}>Se souvenir de moi</Text>
-                        </View>
-                        <View style={styles.forgot_pw_container}>
-                            <TouchableOpacity
-                                onPress={() => {}}
-                            >
-                                <Text style={styles.label}>Mot de passe oublié ?</Text>
-                            </TouchableOpacity>
-                        </View>
                     </View>
 
                     {/* Login Button */}
@@ -98,7 +63,7 @@ const Login = () => {
                             onPress={ () => navigation.navigate('Home') }
                             style={styles.btn_login}
                         >
-                            <Text style={styles.text_lg_btn}>Se connecter</Text>
+                            <Text style={styles.text_lg_btn}>Contiunuer</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -114,7 +79,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     img_background: {
-        height: Dimensions.get('window').height / 2.5
+        height: Dimensions.get('window').height / 1.8
     },
     bottom_view: {
         flex: 1.5,
@@ -123,14 +88,6 @@ const styles = StyleSheet.create({
         borderTopStartRadius: 60,
         borderTopEndRadius: 60,
     },
-    brand_view_text: {
-        color: '#fff',
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginTop: 200,
-        marginLeft: 50,
-        fontFamily: 'Montserrat-Bold'
-    },
     radius_view: {
         padding: 40
     },
@@ -138,10 +95,16 @@ const styles = StyleSheet.create({
         color: '#000',
         fontSize: 40,
         textAlign: 'center',
-        marginTop: 20,
+        marginTop: 10,
         fontWeight: 'bold',
         // color: '#0d41e1'
         fontFamily: 'Montserrat-Bold'
+    },
+    info_text: {
+        marginTop: 20,
+        fontFamily: 'Montserrat-SemiBold',
+        textAlign: 'center',
+        fontSize: 16
     },
     login_view: {
         marginTop: 10
@@ -151,42 +114,22 @@ const styles = StyleSheet.create({
         borderColor: '#4632A1',
         padding: 10,
         margin: 10,
-        fontFamily: 'Montserrat-Regular'
-    },
-    forgot_pw_view: {
-        height: 50,
-        marginTop: 20,
-        flexDirection: 'row'
+        fontFamily: 'Montserrat-Regular',
+        textAlign: 'center',
+        fontSize: 28
     },
     check_code: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-    text_input_code: {
-        flex: 2,
-        borderBottomWidth: 1,
-        borderColor: '#4632A1',
-        padding: 10,
-        margin: 10,
-        fontFamily: 'Montserrat-Regular'
-    },
     img_code: {
         flex: 1
-    },
-    checkbox_container: {
-        flexDirection: "row",
-        marginBottom: 20
     },
     checkbox: {
         alignSelf: "center",
     },
-    label: {
-        margin: 8,
-        fontFamily: 'Montserrat-SemiBold',
-        fontSize: 12
-    },
     lg_btn_container: {
-        marginTop: 5,
+        marginTop: 20,
         backgroundColor: 'transparent'
     },
     btn_login: {
