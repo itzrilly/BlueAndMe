@@ -18,6 +18,7 @@ import LegalInfos from '../pages/LegalInfos'
 import Plan from '../pages/Plan'
 import ChoicePlan from '../pages/ChoicePlan'
 import Language from '../pages/Language'
+import Verif from '../pages/Verif'
 import CustomDrawer from '../components/CustomDrawer'
 import { useSelector } from 'react-redux'
 
@@ -411,6 +412,11 @@ const Navigation = () => {
                 <BlueStack.Screen
                     name='Login'
                     component={Login}
+                    options={{ headerShown: false }}
+                />
+                <BlueStack.Screen
+                    name='Verif'
+                    component={Verif}
                     options={{ headerShown: false }}
                 />
                 <BlueStack.Screen

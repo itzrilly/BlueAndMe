@@ -49,9 +49,11 @@ const Stats = (props) => {
         <View style={ theme.mode == 'light' ? styles.container_light : styles.container_dark }>
 
             { lg.language == 'Langue' ?
-            (<FlatList
-                data={info}
-                renderItem = { ({item}) => <StatItem
+            (
+                <FlatList
+                    data={info}
+                    renderItem = {
+                        ({item}) => <StatItem
                         title = {item.title}
                         image = {item.image}
                         qty= {item.qty}
@@ -59,10 +61,10 @@ const Stats = (props) => {
                         sms={item.sms}
                         text_validity= {item.text_validity}
                         date_exp = {item.date_exp}
+                        style={styles.stat_item}
                     />
                 }
                 keyExtractor={(item) => item.id}
-                style={styles.stat_item}
             />) :
             (<FlatList
                 data={infoEng}
@@ -74,10 +76,11 @@ const Stats = (props) => {
                         sms={item.sms}
                         text_validity= {item.text_validity}
                         date_exp = {item.date_exp}
+                        style={styles.stat_item}
                     />
                 }
                 keyExtractor={(item) => item.id}
-                style={[styles.stat_item, { marginBottom: 50 }]}
+                // style={[styles.stat_item, { marginBottom: 50 }]}
             />)}
 
         </View>
@@ -97,7 +100,8 @@ const styles = StyleSheet.create({
     container_light: {
         flex: 1,
         paddingTop: 7,
-        backgroundColor: '#ddd'
+        // backgroundColor: '#ddd'
+        backgroundColor: 'red'
     },
     container_dark: {
         flex: 1,
@@ -105,6 +109,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#14213d',
     },
     stat_item: {
-        flex: 1
+        flex: 1,
+        backgroundColor: 'yellow',
     }
 })

@@ -6,26 +6,11 @@ import { useNavigation } from '@react-navigation/native'
 const Login = () => {
     const navigation = useNavigation()
 
-    const [toggleCheckBox, setToggleCheckBox] = useState(0)
-    const [decimalInput, setDecimalInput] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
 
-    const validator = /^[+-]?\d*(?:[.,]\d*)?$/;
-
-    function onNumberInputChange(text){
-        if (validator.test(text)){
-            text = text.replace(",",".")
-            setDecimalInput(text);
-            // console.log(text.slice(0, 3))
-            if(text.slice(0, 3) === '620'){
-                console.log('Good Number')
-            }else{
-                console.log('Bad Number')
-            }
-        }
-        else{
-            setDecimalInput(text.substring(0, text.length - 1));
-        }
-    }
+    const isValidInput = () => {
+        return /^620[0-9]{6}$/.test(phoneNumber)
+    };
 
     return(
         <ScrollView 
@@ -49,18 +34,20 @@ const Login = () => {
                             style={styles.text_input}
                             keyboardType = 'numeric'
                             maxLength={9}
-                            value = {decimalInput}
                             onChangeText={(text) => {
-                                setDecimalInput(text);
-                                onNumberInputChange(text);
+                                setPhoneNumber(text);
                             }}
+                            value={phoneNumber}
                         />
                     </View>
 
                     {/* Login Button */}
                     <View style={styles.lg_btn_container}>
                         <TouchableOpacity
-                            onPress={ () => navigation.navigate('Home') }
+                            onPress={ () => {
+                                navigation.navigate('Verif', { phoneNumber })
+                            }}
+                            disabled={!isValidInput()}
                             style={styles.btn_login}
                         >
                             <Text style={styles.text_lg_btn}>Contiunuer</Text>
